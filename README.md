@@ -17,7 +17,7 @@ A collection of AI-powered tools to help Etsy sellers optimize their shops and l
 
 - **Frontend**: Next.js, React, Tailwind CSS
 - **Backend**: Express.js, Node.js
-- **AI**: OpenAI API
+- **AI**: OpenRouter API (using Meta Llama 3.3 70B model)
 
 ## Project Structure
 
@@ -40,7 +40,7 @@ etsy-generators/
 
 - Node.js (v14 or higher)
 - npm or yarn
-- OpenAI API key
+- OpenRouter API key (sign up at [openrouter.ai](https://openrouter.ai/))
 
 ## Installation
 
@@ -62,9 +62,9 @@ etsy-generators/
    npm install
    ```
 
-4. Create a `.env` file in the backend directory with your OpenAI API key:
+4. Create a `.env` file in the backend directory with your OpenRouter API key:
    ```
-   OPENAI_API_KEY=your_openai_api_key
+   OPENROUTER_API_KEY=your_openrouter_api_key
    PORT=5001
    NODE_ENV=development
    ```
@@ -90,7 +90,7 @@ etsy-generators/
 ### Backend Deployment
 
 1. Set up environment variables on your hosting platform:
-   - `OPENAI_API_KEY`: Your OpenAI API key
+   - `OPENROUTER_API_KEY`: Your OpenRouter API key
    - `PORT`: The port to run the server on (often set by the hosting platform)
    - `NODE_ENV`: Set to "production"
 
@@ -124,7 +124,7 @@ vercel
 
 ### Backend
 
-- `OPENAI_API_KEY`: Your OpenAI API key
+- `OPENROUTER_API_KEY`: Your OpenRouter API key
 - `PORT`: The port to run the server on (default: 5001)
 - `NODE_ENV`: The environment to run the server in (development/production)
 
@@ -144,10 +144,11 @@ vercel
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Acknowledgements
 
-- [OpenAI](https://openai.com/) for providing the AI capabilities
+- [OpenRouter](https://openrouter.ai/) for providing access to various AI models
+- [Meta](https://ai.meta.com/) for the Llama 3.3 70B model
 - [Next.js](https://nextjs.org/) for the frontend framework
 - [Express.js](https://expressjs.com/) for the backend framework
+- [Tailwind CSS](https://tailwindcss.com/) for styling
 - [Tailwind CSS](https://tailwindcss.com/) for styling
