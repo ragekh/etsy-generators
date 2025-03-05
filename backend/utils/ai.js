@@ -20,11 +20,17 @@ const CACHE_TTL = 3600000; // 1 hour in milliseconds
  * @returns {Promise<string>} The generated text
  */
 async function generateText(prompt, options = {}) {
-  // Create a cache key from the prompt and options
-  const cacheKey = JSON.stringify({ prompt, options });
+  // Create a copy of options without the timestamp to prevent cache busting
+  const { timestamp, ...cacheableOptions } = options;
   
-  // Check if we have a cached response
-  if (responseCache.has(cacheKey)) {
+  // Create a cache key from the prompt and cacheable options
+  const cacheKey = JSON.stringify({ prompt, options: cacheableOptions });
+  
+  // If timestamp is provided, skip cache for regeneration requests
+  const skipCache = timestamp !== undefined;
+  
+  // Check if we have a cached response and we're not skipping cache
+  if (!skipCache && responseCache.has(cacheKey)) {
     const cachedItem = responseCache.get(cacheKey);
     // Check if the cached item is still valid
     if (Date.now() - cachedItem.timestamp < CACHE_TTL) {

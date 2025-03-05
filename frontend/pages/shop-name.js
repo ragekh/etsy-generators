@@ -23,7 +23,11 @@ export default function ShopNameGenerator() {
   }, [result]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
+    
+    // Prevent multiple submissions
+    if (loading) return;
+    
     setLoading(true);
     setError('');
     
@@ -36,7 +40,12 @@ export default function ShopNameGenerator() {
     }
     
     try {
-      const response = await axios.post('http://localhost:5001/api/generate-shop-name', { keywords });
+      // Add a timestamp to prevent caching
+      const timestamp = new Date().getTime();
+      const response = await axios.post('http://localhost:5001/api/generate-shop-name', { 
+        keywords,
+        timestamp // Add timestamp to make each request unique
+      });
       setResult(response.data.result);
     } catch (err) {
       setError(err.response?.data?.error || 'Something went wrong');
@@ -103,7 +112,7 @@ export default function ShopNameGenerator() {
             className="w-full bg-[#F1641E] text-white p-3 rounded-md hover:bg-[#e05a1c] transition font-medium flex justify-center items-center"
             disabled={loading}
           >
-            {loading ? (
+            {loading && !regenerating ? (
               <>
                 <LoadingSpinner size="sm" color="#ffffff" />
                 <span className="ml-2">Generating...</span>
@@ -142,8 +151,9 @@ export default function ShopNameGenerator() {
                 <p>Tip: Choose a name that's memorable, easy to spell, and reflects your brand identity.</p>
                 {!loading && (
                   <button 
-                    onClick={handleSubmit} 
+                    onClick={() => handleSubmit()} 
                     className="mt-3 text-[#F1641E] hover:text-[#e05a1c] font-medium transition flex items-center"
+                    type="button"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />

@@ -10,11 +10,11 @@ const { validateRequest } = require('../middleware/validation');
  */
 router.post('/', validateRequest(['productName', 'description']), async (req, res) => {
   try {
-    const { productName, description } = req.body;
+    const { productName, description, timestamp } = req.body;
     
     const prompt = `Write a compelling and informative Etsy product description for a product named "${productName}" with the following details: ${description}. Keep it concise, engaging, and optimized for sales.`;
     
-    const result = await generateText(prompt, { max_tokens: 400 });
+    const result = await generateText(prompt, { max_tokens: 400, timestamp });
     res.json({ result });
   } catch (error) {
     console.error('Description Generator Error:', error);

@@ -19,7 +19,13 @@ export default function DescriptionGenerator() {
     setError('');
     setResult('');
     try {
-      const response = await axios.post('http://localhost:5001/api/generate-description', { productName, description });
+      // Add timestamp to prevent caching when regenerating
+      const timestamp = new Date().getTime();
+      const response = await axios.post('http://localhost:5001/api/generate-description', {
+        productName,
+        description,
+        timestamp
+      });
       setResult(response.data.result);
     } catch (err) {
       setError(err.response?.data?.error || 'Something went wrong');

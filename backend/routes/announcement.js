@@ -10,11 +10,11 @@ const { validateRequest } = require('../middleware/validation');
  */
 router.post('/', validateRequest(['announcementType', 'details']), async (req, res) => {
   try {
-    const { announcementType, details } = req.body;
+    const { announcementType, details, timestamp } = req.body;
     
     const prompt = `Generate a clear, concise Etsy shop announcement for ${announcementType} with these details: ${details}. The announcement should be informative, professional, and easy to understand at a glance.`;
     
-    const result = await generateText(prompt, { max_tokens: 300 });
+    const result = await generateText(prompt, { max_tokens: 300, timestamp });
     res.json({ result });
   } catch (error) {
     console.error('Announcement Generator Error:', error);

@@ -10,11 +10,11 @@ const { validateRequest } = require('../middleware/validation');
  */
 router.post('/', validateRequest(['inquiryType', 'details']), async (req, res) => {
   try {
-    const { inquiryType, details } = req.body;
+    const { inquiryType, details, timestamp } = req.body;
     
     const prompt = `Write a polite, professional response to a customer's ${inquiryType} on Etsy: ${details}. Keep it concise, friendly, and helpful. The tone should be warm but professional.`;
     
-    const result = await generateText(prompt, { max_tokens: 350 });
+    const result = await generateText(prompt, { max_tokens: 350, timestamp });
     res.json({ result });
   } catch (error) {
     console.error('Customer Response Generator Error:', error);

@@ -10,11 +10,11 @@ const { validateRequest } = require('../middleware/validation');
  */
 router.post('/', validateRequest(['promotionType', 'productDetails']), async (req, res) => {
   try {
-    const { promotionType, productDetails } = req.body;
+    const { promotionType, productDetails, timestamp } = req.body;
     
     const prompt = `Write a short, catchy promotion text for an Etsy ${promotionType} featuring ${productDetails}. Include a call-to-action. Keep it under 100 characters if possible, and make it exciting and compelling.`;
     
-    const result = await generateText(prompt, { max_tokens: 200 });
+    const result = await generateText(prompt, { max_tokens: 200, timestamp });
     res.json({ result });
   } catch (error) {
     console.error('Promotion Generator Error:', error);

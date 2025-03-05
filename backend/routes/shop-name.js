@@ -10,11 +10,13 @@ const { validateRequest } = require('../middleware/validation');
  */
 router.post('/', validateRequest(['keywords']), async (req, res) => {
   try {
-    const { keywords } = req.body;
+    const { keywords, timestamp } = req.body;
     
     const prompt = `You are an expert in naming businesses, especially Etsy shops. Generate 5-10 unique, catchy, and memorable shop names for an Etsy shop focused on "${keywords}". List each name on a new line.`;
     
-    const result = await generateText(prompt);
+    // Pass timestamp to generateText to control caching
+    const result = await generateText(prompt, { timestamp });
+    
     res.json({ result });
   } catch (error) {
     console.error('Shop Name Generator Error:', error);
