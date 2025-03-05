@@ -28,16 +28,17 @@ export default function Layout({ children }) {
   ];
   
   const preloadResources = [
-    {
-      href: '/fonts/inter-var.woff2',
-      as: 'font',
-      type: 'font/woff2'
-    },
-    {
-      href: '/images/logo.svg',
-      as: 'image',
-      type: 'image/svg+xml'
-    }
+    // Only include resources that actually exist
+    // {
+    //   href: '/fonts/inter-var.woff2',
+    //   as: 'font',
+    //   type: 'font/woff2'
+    // },
+    // {
+    //   href: '/images/logo.svg',
+    //   as: 'image',
+    //   type: 'image/svg+xml'
+    // }
   ];
 
   return (

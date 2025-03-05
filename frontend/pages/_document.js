@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         {/* Basic Meta Tags */}
         <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+        {/* Viewport meta tag moved to _app.js */}
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -15,14 +15,12 @@ export default function Document() {
         <meta name="apple-mobile-web-app-title" content="Etsy AI Generators" />
         
         {/* Favicon and PWA */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+        <link rel="icon" href="/favicon.ico" />
+        {/* Removed references to non-existent icon files */}
         <link rel="manifest" href="/manifest.json" />
         <meta name="apple-mobile-web-app-status-bar" content="#F1641E" />
         
-        {/* Preload Critical Resources */}
-        <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        {/* Removed preload for non-existent font */}
         
         {/* Preconnect to domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

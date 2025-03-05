@@ -4,6 +4,8 @@ import { ShopNameIcon } from '../components/Icons';
 import CopyButton from '../components/CopyButton';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SEO from '../components/SEO';
+import SEOTips from '../components/SEOTips';
+import SEOChecklist from '../components/SEOChecklist';
 
 export default function ShopNameGenerator() {
   const [keywords, setKeywords] = useState('');
@@ -129,6 +131,11 @@ export default function ShopNameGenerator() {
           </div>
         )}
         
+        {/* SEO Tips Section - Always visible */}
+        <div className="mb-6">
+          <SEOTips category="shop-name" />
+        </div>
+        
         {/* Results Section */}
         <div ref={resultRef}>
           {(result || (loading && regenerating)) && (
@@ -150,8 +157,8 @@ export default function ShopNameGenerator() {
               <div className="mt-4 text-sm text-gray-500">
                 <p>Tip: Choose a name that's memorable, easy to spell, and reflects your brand identity.</p>
                 {!loading && (
-                  <button 
-                    onClick={() => handleSubmit()} 
+                  <button
+                    onClick={() => handleSubmit()}
                     className="mt-3 text-[#F1641E] hover:text-[#e05a1c] font-medium transition flex items-center"
                     type="button"
                   >
@@ -165,6 +172,34 @@ export default function ShopNameGenerator() {
             </div>
           )}
         </div>
+        
+        {/* SEO Checklist - Shown after results are generated */}
+        {result && !loading && (
+          <div className="mt-8">
+            <h2 className="text-xl font-semibold mb-4">Shop Name SEO Checklist</h2>
+            <p className="text-gray-600 mb-4">
+              Use this checklist to ensure your shop name is optimized for Etsy's search algorithm and customer discovery:
+            </p>
+            <SEOChecklist type="shop-name" />
+            
+            <div className="mt-8 bg-[#F0F9FF] border border-[#B9E6FE] rounded-lg p-4">
+              <h3 className="font-semibold text-[#026AA2] mb-2">Why Your Shop Name Matters</h3>
+              <p className="text-sm text-gray-700 mb-3">
+                Your Etsy shop name is more than just a label—it's the foundation of your brand identity. A well-chosen name can:
+              </p>
+              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                <li>Make your shop more memorable to potential customers</li>
+                <li>Improve your search visibility when it includes relevant keywords</li>
+                <li>Communicate your unique value proposition at a glance</li>
+                <li>Build trust and professionalism with your target audience</li>
+                <li>Differentiate your shop from competitors in your niche</li>
+              </ul>
+              <p className="text-sm text-gray-700 mt-3">
+                Take time to choose a name that aligns with your products, resonates with your target audience, and has potential for long-term growth.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

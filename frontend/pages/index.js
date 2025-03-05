@@ -14,6 +14,7 @@ import SEO from '../components/SEO';
 import FAQSchema from '../components/FAQSchema';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
 import HowToSchema from '../components/HowToSchema';
+import SEOTips from '../components/SEOTips';
 
 export default function Home() {
   // FAQ data for the FAQ schema
@@ -82,17 +83,17 @@ export default function Home() {
       <FAQSchema faqs={faqs} />
       
       <LocalBusinessSchema
-        images={[
-          "https://etsy-ai-generators.com/images/logo.png",
-          "https://etsy-ai-generators.com/images/homepage.jpg"
-        ]}
+        images={[]} // Removed references to non-existent images
       />
       
       <HowToSchema
         name="How to Use Etsy AI Generators"
         description="Learn how to use our free AI tools to optimize your Etsy shop and listings"
-        image="https://etsy-ai-generators.com/images/how-to-use.jpg"
-        steps={howToSteps}
+        image="" // Removed reference to non-existent image
+        steps={howToSteps.map(step => ({
+          ...step,
+          image: "" // Removed references to non-existent images
+        }))}
         totalTime="PT5M"
       />
       <div className="text-center">
@@ -183,6 +184,51 @@ export default function Home() {
               <p className="text-sm">Create unique content that helps your shop stand out from competitors</p>
             </div>
           </div>
+        </div>
+        
+        {/* SEO Statistics Section */}
+        <div className="mt-12 bg-white border border-gray-200 p-6 rounded-lg max-w-4xl mx-auto">
+          <h2 className="text-2xl font-semibold mb-6 text-center">Etsy SEO Statistics</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-[#F1641E] mb-2">61%</div>
+              <p className="text-sm text-gray-600">of Etsy shoppers use search to find products</p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-[#F1641E] mb-2">44%</div>
+              <p className="text-sm text-gray-600">higher conversion rate for optimized listings</p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-[#F1641E] mb-2">80%</div>
+              <p className="text-sm text-gray-600">of clicks go to first page search results</p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-[#F1641E] mb-2">5.3x</div>
+              <p className="text-sm text-gray-600">more traffic for shops with optimized content</p>
+            </div>
+          </div>
+          
+          <div className="prose prose-sm max-w-none text-gray-700">
+            <p className="mb-3">
+              <strong>Effective SEO is crucial for Etsy success.</strong> With over 5.2 million active sellers on the platform, standing out requires strategic optimization. Etsy's algorithm considers keywords, listing quality, recency, and customer experience when ranking search results.
+            </p>
+            <p className="mb-3">
+              Shops that regularly update their listings with relevant keywords, high-quality images, and compelling descriptions see significantly higher visibility and sales. Our AI generators help you implement these best practices effortlessly, giving you a competitive edge in the marketplace.
+            </p>
+            <p>
+              Whether you're just starting your Etsy journey or looking to boost an established shop, our tools provide the optimization you need to reach more potential customers and increase your conversion rate.
+            </p>
+          </div>
+        </div>
+        
+        {/* SEO Tips Section */}
+        <div className="mt-12 max-w-4xl mx-auto">
+          <h2 className="text-2xl font-semibold mb-4 text-center">Etsy SEO Tips</h2>
+          <p className="text-center text-gray-600 mb-6">Implement these strategies to improve your shop's visibility</p>
+          
+          {/* Import and use the SEOTips component */}
+          <SEOTips category="general" />
         </div>
       </div>
     </>
