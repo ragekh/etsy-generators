@@ -5,6 +5,8 @@ import CopyButton from '../components/CopyButton';
 import LoadingSpinner from '../components/LoadingSpinner';
 import CharacterCounter from '../components/CharacterCounter';
 import SEO from '../components/SEO';
+import SEOTips from '../components/SEOTips';
+import SEOChecklist from '../components/SEOChecklist';
 
 export default function DescriptionGenerator() {
   const [productName, setProductName] = useState('');
@@ -135,6 +137,11 @@ export default function DescriptionGenerator() {
           </button>
         </form>
         
+        {/* SEO Tips Section - Always visible */}
+        <div className="mb-6">
+          <SEOTips category="description" />
+        </div>
+        
         {error && (
           <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
             <p className="text-red-700">{error}</p>
@@ -178,6 +185,34 @@ export default function DescriptionGenerator() {
             </div>
           )}
         </div>
+        
+        {/* SEO Checklist - Shown after results are generated */}
+        {result && !loading && (
+          <div className="mt-8">
+            <h2 className="text-xl font-semibold mb-4">Product Description SEO Checklist</h2>
+            <p className="text-gray-600 mb-4">
+              Use this checklist to ensure your product description is optimized for Etsy's search algorithm and customer conversion:
+            </p>
+            <SEOChecklist type="description" />
+            
+            <div className="mt-8 bg-[#F0F9FF] border border-[#B9E6FE] rounded-lg p-4">
+              <h3 className="font-semibold text-[#026AA2] mb-2">Why Product Descriptions Matter</h3>
+              <p className="text-sm text-gray-700 mb-3">
+                Your product description is one of the most critical elements of your Etsy listing. A well-crafted description can:
+              </p>
+              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                <li>Improve your search ranking by including relevant keywords</li>
+                <li>Answer customer questions before they need to ask</li>
+                <li>Highlight the unique benefits and features of your product</li>
+                <li>Address potential objections and reduce return rates</li>
+                <li>Create an emotional connection with your target audience</li>
+              </ul>
+              <p className="text-sm text-gray-700 mt-3">
+                Studies show that detailed, benefit-focused descriptions can increase conversion rates by up to 78%. Take time to craft descriptions that not only inform but also persuade and engage your potential customers.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

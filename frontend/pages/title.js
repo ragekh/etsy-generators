@@ -5,6 +5,8 @@ import CopyButton from '../components/CopyButton';
 import LoadingSpinner from '../components/LoadingSpinner';
 import CharacterCounter from '../components/CharacterCounter';
 import SEO from '../components/SEO';
+import SEOTips from '../components/SEOTips';
+import SEOChecklist from '../components/SEOChecklist';
 
 export default function TitleGenerator() {
   const [productName, setProductName] = useState('');
@@ -134,6 +136,11 @@ export default function TitleGenerator() {
           </button>
         </form>
         
+        {/* SEO Tips Section - Always visible */}
+        <div className="mb-6">
+          <SEOTips category="title" />
+        </div>
+        
         {error && (
           <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
             <p className="text-red-700">{error}</p>
@@ -177,6 +184,34 @@ export default function TitleGenerator() {
             </div>
           )}
         </div>
+        
+        {/* SEO Checklist - Shown after results are generated */}
+        {result && !loading && (
+          <div className="mt-8">
+            <h2 className="text-xl font-semibold mb-4">Listing Title SEO Checklist</h2>
+            <p className="text-gray-600 mb-4">
+              Use this checklist to ensure your listing title is optimized for Etsy's search algorithm:
+            </p>
+            <SEOChecklist type="title" />
+            
+            <div className="mt-8 bg-[#F0F9FF] border border-[#B9E6FE] rounded-lg p-4">
+              <h3 className="font-semibold text-[#026AA2] mb-2">Why Your Listing Title Matters</h3>
+              <p className="text-sm text-gray-700 mb-3">
+                Your listing title is the most important element for Etsy SEO. Here's why it's crucial to get it right:
+              </p>
+              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                <li>Etsy gives more weight to words at the beginning of your title</li>
+                <li>Titles have a 140-character limit - use it strategically</li>
+                <li>Buyers scan titles quickly, so clarity is essential</li>
+                <li>Exact keyword matches rank higher in search results</li>
+                <li>Titles should match your tags for maximum SEO impact</li>
+              </ul>
+              <p className="text-sm text-gray-700 mt-3">
+                According to Etsy's own research, listings with optimized titles receive up to 64% more views than those with generic titles. A well-crafted title balances SEO keywords with readability to attract both search engines and human buyers.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

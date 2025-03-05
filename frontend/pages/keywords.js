@@ -5,6 +5,8 @@ import CopyButton from '../components/CopyButton';
 import LoadingSpinner from '../components/LoadingSpinner';
 import CharacterCounter from '../components/CharacterCounter';
 import SEO from '../components/SEO';
+import SEOTips from '../components/SEOTips';
+import SEOChecklist from '../components/SEOChecklist';
 
 export default function KeywordsGenerator() {
   const [productName, setProductName] = useState('');
@@ -135,6 +137,11 @@ export default function KeywordsGenerator() {
           </button>
         </form>
         
+        {/* SEO Tips Section - Always visible */}
+        <div className="mb-6">
+          <SEOTips category="keywords" />
+        </div>
+        
         {error && (
           <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
             <p className="text-red-700">{error}</p>
@@ -178,6 +185,34 @@ export default function KeywordsGenerator() {
             </div>
           )}
         </div>
+        
+        {/* SEO Checklist - Shown after results are generated */}
+        {result && !loading && (
+          <div className="mt-8">
+            <h2 className="text-xl font-semibold mb-4">Keywords SEO Checklist</h2>
+            <p className="text-gray-600 mb-4">
+              Use this checklist to ensure your keywords are optimized for Etsy's search algorithm:
+            </p>
+            <SEOChecklist type="keywords" />
+            
+            <div className="mt-8 bg-[#F0F9FF] border border-[#B9E6FE] rounded-lg p-4">
+              <h3 className="font-semibold text-[#026AA2] mb-2">The Power of Effective Keywords</h3>
+              <p className="text-sm text-gray-700 mb-3">
+                Keywords are the foundation of Etsy SEO. They determine when and where your listings appear in search results:
+              </p>
+              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                <li>Etsy allows 13 tags per listing, each with a 20-character limit</li>
+                <li>The first 3-5 words in your title have the strongest SEO impact</li>
+                <li>Long-tail keywords (3+ words) attract more qualified buyers</li>
+                <li>Etsy's algorithm prioritizes exact keyword matches</li>
+                <li>Keywords should appear in your title, tags, and description for maximum impact</li>
+              </ul>
+              <p className="text-sm text-gray-700 mt-3">
+                According to Etsy, listings with all 13 tags filled receive on average 278% more views than listings with just a few tags. Take time to research and implement the most relevant keywords for your products.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
