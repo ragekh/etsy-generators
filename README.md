@@ -1,6 +1,6 @@
-# Etsy AI Generators
+# Etsy AI Generators (v1.0.0)
 
-A collection of AI-powered tools to help Etsy sellers optimize their shops and listings.
+A collection of AI-powered tools to help Etsy sellers optimize their shops and listings. This project has reached version 1.0.0 with a consistent user experience across all generators.
 
 ## Features
 
@@ -151,3 +151,15 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Changelog
+
+### Version 1.0.0 (2025-05-03)
+- Achieved consistent user experience across all generators
+- Added regeneration functionality to all generators
+- Added copy button for easy copying of generated content
+- Added character counter for both input forms and results
+- Improved loading states with spinners and visual feedback
+- Added SEO component with schema.org structured data
+- Added smooth scrolling to results when they're generated
+- Updated backend routes to handle timestamp parameter for regeneration

@@ -14,6 +14,7 @@ router.post('/', validateRequest(['inquiryType', 'details']), async (req, res) =
     
     const prompt = `Write a polite, professional response to a customer's ${inquiryType} on Etsy: ${details}. Keep it concise, friendly, and helpful. The tone should be warm but professional.`;
     
+    // Pass timestamp to prevent caching when regenerating
     const result = await generateText(prompt, { max_tokens: 350, timestamp });
     res.json({ result });
   } catch (error) {

@@ -14,6 +14,7 @@ router.post('/', validateRequest(['announcementType', 'details']), async (req, r
     
     const prompt = `Generate a clear, concise Etsy shop announcement for ${announcementType} with these details: ${details}. The announcement should be informative, professional, and easy to understand at a glance.`;
     
+    // Pass timestamp to prevent caching when regenerating
     const result = await generateText(prompt, { max_tokens: 300, timestamp });
     res.json({ result });
   } catch (error) {
