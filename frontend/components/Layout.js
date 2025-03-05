@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+import AccessibilityFeatures, { announceToScreenReader } from './AccessibilityFeatures';
+import SecurityHeaders from './SecurityHeaders';
+import PerformanceOptimization from './PerformanceOptimization';
 
 export default function Layout({ children }) {
   const router = useRouter();
@@ -10,13 +13,68 @@ export default function Layout({ children }) {
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [router.pathname]);
+  
+  // Announce page changes to screen readers
+  useEffect(() => {
+    const pageTitle = document.title || 'Etsy AI Generators';
+    announceToScreenReader(`Navigated to ${pageTitle}`);
+  }, [router.pathname]);
+  
+  // Performance optimization resources
+  const preconnectUrls = [
+    'https://fonts.googleapis.com',
+    'https://fonts.gstatic.com',
+    'https://www.google-analytics.com'
+  ];
+  
+  const preloadResources = [
+    {
+      href: '/fonts/inter-var.woff2',
+      as: 'font',
+      type: 'font/woff2'
+    },
+    {
+      href: '/images/logo.svg',
+      as: 'image',
+      type: 'image/svg+xml'
+    }
+  ];
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      {/* Skip to content link for accessibility */}
-      <a href="#main-content" className="skip-to-content">
-        Skip to content
-      </a>
+      {/* Security Headers */}
+      <SecurityHeaders />
+      
+      {/* Performance Optimization */}
+      <PerformanceOptimization
+        preconnect={preconnectUrls}
+        preload={preloadResources}
+        criticalCSS={`
+          .skip-to-content {
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+          }
+          .skip-to-content:focus {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: auto;
+            height: auto;
+            padding: 0.5rem 1rem;
+            background: white;
+            color: black;
+            z-index: 9999;
+            outline: 2px solid #F1641E;
+          }
+        `}
+      />
+      
+      {/* Accessibility Features */}
+      <AccessibilityFeatures />
       
       {/* Header */}
       <header className="bg-[var(--etsy-orange)] text-white shadow-md">

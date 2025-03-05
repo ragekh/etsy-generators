@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Head from 'next/head';
 import {
   ShopNameIcon,
   DescriptionIcon,
@@ -11,73 +10,91 @@ import {
   AnnouncementIcon,
   EtsyLogo
 } from '../components/Icons';
+import SEO from '../components/SEO';
+import FAQSchema from '../components/FAQSchema';
+import LocalBusinessSchema from '../components/LocalBusinessSchema';
+import HowToSchema from '../components/HowToSchema';
 
 export default function Home() {
+  // FAQ data for the FAQ schema
+  const faqs = [
+    {
+      question: "What are Etsy AI Generators?",
+      answer: "Etsy AI Generators are free AI-powered tools designed to help Etsy sellers optimize their shops and listings. Our tools can generate shop names, product descriptions, keywords, listing titles, customer responses, shop bios, promotion text, and shop announcements."
+    },
+    {
+      question: "Are these tools really free?",
+      answer: "Yes, all our AI generators are completely free to use. There are no hidden fees or premium tiers."
+    },
+    {
+      question: "How do I use these generators?",
+      answer: "Simply select the generator you need, fill in the required information, and click the generate button. The AI will create optimized content for your Etsy shop in seconds."
+    },
+    {
+      question: "Can I edit the generated content?",
+      answer: "Absolutely! The AI provides a starting point, but you should always review and personalize the content to match your brand voice and specific products."
+    },
+    {
+      question: "Will using these tools improve my Etsy sales?",
+      answer: "While we can't guarantee specific results, our tools are designed to help optimize your Etsy listings for better visibility and conversion. Many sellers report improved performance after implementing AI-generated content."
+    }
+  ];
+  
+  // How-to data for the HowTo schema
+  const howToSteps = [
+    {
+      name: "Choose a Generator",
+      text: "Select the appropriate generator for your needs from our homepage.",
+      image: "https://etsy-ai-generators.com/images/step1.jpg",
+      url: "https://etsy-ai-generators.com/#generators"
+    },
+    {
+      name: "Enter Your Information",
+      text: "Fill in the required fields with details about your product or shop.",
+      image: "https://etsy-ai-generators.com/images/step2.jpg",
+      url: "https://etsy-ai-generators.com/#input"
+    },
+    {
+      name: "Generate Content",
+      text: "Click the generate button and wait a few seconds for the AI to create your content.",
+      image: "https://etsy-ai-generators.com/images/step3.jpg",
+      url: "https://etsy-ai-generators.com/#generate"
+    },
+    {
+      name: "Review and Edit",
+      text: "Review the generated content, make any necessary edits, and copy it to your Etsy shop.",
+      image: "https://etsy-ai-generators.com/images/step4.jpg",
+      url: "https://etsy-ai-generators.com/#review"
+    }
+  ];
+  
   return (
     <>
-      <Head>
-        <title>Etsy AI Generators - Boost Your Etsy Shop with AI Tools</title>
-        <meta
-          name="description"
-          content="Generate Etsy shop names, product descriptions, keywords, and listing titles with our free AI tools. Optimize your Etsy store for success!"
-        />
-        <meta name="keywords" content="Etsy AI tools, Etsy shop name generator, Etsy product description, Etsy keywords, Etsy SEO, Etsy shop optimization" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-        {/* Canonical URL */}
-        <link rel="canonical" href="https://etsy-ai-generators.com/" />
-        
-        {/* Open Graph / Facebook */}
-        <meta property="og:title" content="Etsy AI Generators - Boost Your Etsy Shop with AI Tools" />
-        <meta property="og:description" content="Generate Etsy shop names, product descriptions, keywords, and listing titles with our free AI tools. Optimize your Etsy store for success!" />
-        <meta property="og:url" content="https://etsy-ai-generators.com/" />
-        <meta property="og:image" content="https://etsy-ai-generators.com/og-image.jpg" />
-        
-        {/* Twitter */}
-        <meta name="twitter:title" content="Etsy AI Generators - Boost Your Etsy Shop with AI Tools" />
-        <meta name="twitter:description" content="Generate Etsy shop names, product descriptions, keywords, and listing titles with our free AI tools." />
-        <meta name="twitter:image" content="https://etsy-ai-generators.com/twitter-image.jpg" />
-        
-        {/* Schema.org markup for Google */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'WebApplication',
-              'name': 'Etsy AI Generators',
-              'url': 'https://etsy-ai-generators.com/',
-              'description': 'Generate Etsy shop names, product descriptions, keywords, and listing titles with our free AI tools.',
-              'applicationCategory': 'BusinessApplication',
-              'offers': {
-                '@type': 'Offer',
-                'price': '0',
-                'priceCurrency': 'USD'
-              },
-              'operatingSystem': 'Web'
-            })
-          }}
-        />
-        
-        {/* Breadcrumbs schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              'itemListElement': [
-                {
-                  '@type': 'ListItem',
-                  'position': 1,
-                  'name': 'Home',
-                  'item': 'https://etsy-ai-generators.com/'
-                }
-              ]
-            })
-          }}
-        />
-      </Head>
+      <SEO
+        title="Etsy AI Generators - Boost Your Etsy Shop with AI Tools"
+        description="Generate Etsy shop names, product descriptions, keywords, and listing titles with our free AI tools. Optimize your Etsy store for success!"
+        keywords="Etsy AI tools, Etsy shop name generator, Etsy product description, Etsy keywords, Etsy SEO, Etsy shop optimization"
+        ogImage="https://etsy-ai-generators.com/og-image.jpg"
+        ogImageAlt="Etsy AI Generators - Free tools for Etsy sellers"
+      />
+      
+      {/* Additional schema markup for rich results */}
+      <FAQSchema faqs={faqs} />
+      
+      <LocalBusinessSchema
+        images={[
+          "https://etsy-ai-generators.com/images/logo.png",
+          "https://etsy-ai-generators.com/images/homepage.jpg"
+        ]}
+      />
+      
+      <HowToSchema
+        name="How to Use Etsy AI Generators"
+        description="Learn how to use our free AI tools to optimize your Etsy shop and listings"
+        image="https://etsy-ai-generators.com/images/how-to-use.jpg"
+        steps={howToSteps}
+        totalTime="PT5M"
+      />
       <div className="text-center">
         <h1 className="text-4xl font-bold mb-4">Etsy AI Generators</h1>
         <p className="text-lg mb-10 text-center max-w-2xl mx-auto px-4">
