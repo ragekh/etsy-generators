@@ -1,95 +1,53 @@
-# Etsy AI Generators (v1.0.0)
+# Etsy AI Generators
 
-A collection of AI-powered tools to help Etsy sellers optimize their shops and listings. This project has reached version 1.0.0 with a consistent user experience across all generators.
+A collection of AI-powered tools to help Etsy sellers optimize their shops and listings. Generate shop names, product descriptions, keywords, listing titles, customer responses, shop bios, promotions, and announcements with the power of AI.
 
 ## Features
 
-This application provides eight AI-powered generators for Etsy sellers:
-
-1. **Shop Name Generator** - Create unique and memorable names for your Etsy shop
-2. **Product Description Generator** - Write compelling product descriptions that sell
-3. **Product Keywords Generator** - Find the perfect keywords to improve visibility
-4. **Listing Title Generator** - Create catchy, SEO-friendly listing titles
-5. **Customer Response Generator** - Craft professional responses to customer inquiries and reviews
-6. **Shop Bio Generator** - Create a compelling shop bio to attract customers
-7. **Promotion Text Generator** - Generate text for sales, discounts, or social media promotions
-8. **Shop Announcement Generator** - Create announcements for shop updates and vacations
+- **Shop Name Generator**: Create unique and memorable names for your Etsy shop
+- **Product Description Generator**: Write compelling product descriptions that sell
+- **Product Keywords Generator**: Find the perfect keywords to improve visibility
+- **Listing Title Generator**: Create catchy, SEO-friendly listing titles
+- **Customer Response Generator**: Craft professional responses to customer inquiries and reviews
+- **Shop Bio Generator**: Create a compelling shop bio to attract customers
+- **Promotion Text Generator**: Generate text for sales, discounts, or social media promotions
+- **Shop Announcement Generator**: Create announcements for shop updates and vacations
 
 ## Tech Stack
 
-### Backend
-- Node.js
-- Express.js
-- OpenAI API (via OpenRouter)
-
-### Frontend
-- Next.js
-- React
-- Tailwind CSS
-- Axios
+- **Frontend**: Next.js, React, Tailwind CSS
+- **Backend**: Express.js, Node.js
+- **AI**: OpenAI API
 
 ## Project Structure
 
 ```
-etsy_generators/
-├── backend/
-│   ├── middleware/
-│   │   └── validation.js
-│   ├── routes/
-│   │   ├── announcement.js
-│   │   ├── customer-response.js
-│   │   ├── description.js
-│   │   ├── index.js
-│   │   ├── keywords.js
-│   │   ├── promotion.js
-│   │   ├── shop-bio.js
-│   │   ├── shop-name.js
-│   │   └── title.js
-│   ├── utils/
-│   │   └── ai.js
-│   ├── .env
-│   ├── index.js
-│   └── package.json
-├── frontend/
-│   ├── components/
-│   │   ├── CopyButton.js
-│   │   ├── CharacterCounter.js
-│   │   ├── Icons.js
-│   │   ├── Layout.js
-│   │   └── LoadingSpinner.js
-│   ├── pages/
-│   │   ├── announcement.js
-│   │   ├── customer-response.js
-│   │   ├── description.js
-│   │   ├── index.js
-│   │   ├── keywords.js
-│   │   ├── promotion.js
-│   │   ├── shop-bio.js
-│   │   ├── shop-name.js
-│   │   └── title.js
-│   ├── public/
-│   ├── styles/
-│   │   └── globals.css
-│   ├── next.config.js
-│   ├── package.json
-│   ├── postcss.config.js
-│   └── tailwind.config.js
-└── README.md
+etsy-generators/
+├── backend/               # Express.js backend
+│   ├── index.js           # Main server file
+│   ├── middleware/        # Express middleware
+│   ├── routes/            # API routes
+│   └── utils/             # Utility functions
+└── frontend/              # Next.js frontend
+    ├── components/        # React components
+    ├── pages/             # Next.js pages
+    ├── public/            # Static assets
+    ├── scripts/           # Build scripts
+    └── styles/            # CSS styles
 ```
 
-## Getting Started
-
-### Prerequisites
+## Prerequisites
 
 - Node.js (v14 or higher)
 - npm or yarn
+- OpenAI API key
 
-### Installation
+## Installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/etsy_generators.git
-   cd etsy_generators
+   git clone https://github.com/ragekh/etsy-generators.git
+   cd etsy-generators
    ```
 
 2. Install backend dependencies:
@@ -104,62 +62,92 @@ etsy_generators/
    npm install
    ```
 
-4. Create a `.env` file in the backend directory with the following content:
+4. Create a `.env` file in the backend directory with your OpenAI API key:
    ```
-   OPENROUTER_API_KEY=your_openrouter_api_key
+   OPENAI_API_KEY=your_openai_api_key
    PORT=5001
+   NODE_ENV=development
    ```
 
-### Running the Application
+## Running Locally
 
 1. Start the backend server:
    ```bash
    cd backend
    npm start
    ```
+   The backend server will run on http://localhost:5001
 
-2. Start the frontend development server:
+2. In a new terminal, start the frontend development server:
    ```bash
    cd frontend
    npm run dev
    ```
-
-3. Open your browser and navigate to http://localhost:3000 (or http://localhost:3001 if port 3000 is in use)
+   The frontend will be available at http://localhost:3000
 
 ## Deployment
 
 ### Backend Deployment
 
-The backend can be deployed to platforms like Heroku, AWS, or DigitalOcean.
+1. Set up environment variables on your hosting platform:
+   - `OPENAI_API_KEY`: Your OpenAI API key
+   - `PORT`: The port to run the server on (often set by the hosting platform)
+   - `NODE_ENV`: Set to "production"
+
+2. Deploy the backend:
+   ```bash
+   cd backend
+   npm start
+   ```
 
 ### Frontend Deployment
 
-The frontend can be deployed to Vercel, Netlify, or any other static site hosting service.
-
-1. Build the frontend:
+1. Build the frontend for production:
    ```bash
    cd frontend
    npm run build
    ```
 
-2. Deploy the generated `out` directory to your hosting service.
+2. Start the production server:
+   ```bash
+   npm start
+   ```
+
+Alternatively, you can deploy the frontend to Vercel:
+
+```bash
+npm install -g vercel
+vercel
+```
+
+## Environment Variables
+
+### Backend
+
+- `OPENAI_API_KEY`: Your OpenAI API key
+- `PORT`: The port to run the server on (default: 5001)
+- `NODE_ENV`: The environment to run the server in (development/production)
+
+### Frontend
+
+- No environment variables are required for the frontend in development.
+- For production, you may need to set the backend API URL if it's different from the default.
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Changelog
+## Acknowledgements
 
-### Version 1.0.0 (2025-05-03)
-- Achieved consistent user experience across all generators
-- Added regeneration functionality to all generators
-- Added copy button for easy copying of generated content
-- Added character counter for both input forms and results
-- Improved loading states with spinners and visual feedback
-- Added SEO component with schema.org structured data
-- Added smooth scrolling to results when they're generated
-- Updated backend routes to handle timestamp parameter for regeneration
+- [OpenAI](https://openai.com/) for providing the AI capabilities
+- [Next.js](https://nextjs.org/) for the frontend framework
+- [Express.js](https://expressjs.com/) for the backend framework
+- [Tailwind CSS](https://tailwindcss.com/) for styling
