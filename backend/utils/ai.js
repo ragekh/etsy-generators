@@ -38,7 +38,7 @@ async function generateText(prompt, options = {}) {
   try {
     // Default options
     const defaultOptions = {
-      model: 'openai/gpt-4o-mini',
+      model: 'deepseek/deepseek-r1:free',
       max_tokens: 300,
     };
     

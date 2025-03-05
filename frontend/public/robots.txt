@@ -1,3 +1,13 @@
+# Etsy AI Generators robots.txt
 User-agent: *
 Allow: /
-Sitemap: https://yourdomain.com/sitemap.xml
+
+# Disallow crawling of error pages
+Disallow: /404
+Disallow: /500
+
+# Sitemap
+Sitemap: https://etsy-ai-generators.com/sitemap.xml
+
+# Crawl delay to be nice to search engines
+Crawl-delay: 1

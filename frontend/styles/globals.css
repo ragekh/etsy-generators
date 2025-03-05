@@ -16,8 +16,9 @@ body {
 
 /* Improved focus styles for better accessibility */
 *:focus {
-  outline: 2px solid var(--etsy-orange);
-  outline-offset: 2px;
+  outline: 1px solid var(--etsy-orange);
+  outline-offset: 1px;
+  box-shadow: 0 0 0 1px rgba(241, 100, 30, 0.3);
 }
 
 /* Skip to content link for keyboard users */
