@@ -2,6 +2,8 @@
 
 A collection of AI-powered tools to help Etsy sellers optimize their shops and listings. Generate shop names, product descriptions, keywords, listing titles, customer responses, shop bios, promotions, and announcements with the power of AI.
 
+This project is designed to be easily adaptable for other AI generator applications. You can clone this repository and modify it to create AI generators for different platforms or use cases by simply changing the prompts and UI elements.
+
 ## Features
 
 - **Shop Name Generator**: Create unique and memorable names for your Etsy shop

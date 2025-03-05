@@ -217,6 +217,16 @@ export default function Layout({ children }) {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <p className="text-sm">© {new Date().getFullYear()} Etsy AI Generators. All rights reserved.</p>
+              <p className="text-sm mt-1">
+                <a
+                  href="https://github.com/ragekh/etsy-generators"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--etsy-orange)] hover:underline"
+                >
+                  Open Source on GitHub
+                </a>
+              </p>
             </div>
             <div className="flex flex-wrap gap-4">
               <Link href="/" className="text-sm hover:text-[var(--etsy-orange)] transition">
