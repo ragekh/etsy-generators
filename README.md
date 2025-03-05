@@ -38,7 +38,7 @@ etsy-generators/
 
 ## Prerequisites
 
-- Node.js (v14 or higher)
+- Node.js (v18.17 or higher)
 - npm or yarn
 - OpenRouter API key (sign up at [openrouter.ai](https://openrouter.ai/))
 
@@ -144,11 +144,11 @@ vercel
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
 ## Acknowledgements
 
 - [OpenRouter](https://openrouter.ai/) for providing access to various AI models
 - [Meta](https://ai.meta.com/) for the Llama 3.3 70B model
 - [Next.js](https://nextjs.org/) for the frontend framework
 - [Express.js](https://expressjs.com/) for the backend framework
-- [Tailwind CSS](https://tailwindcss.com/) for styling
 - [Tailwind CSS](https://tailwindcss.com/) for styling
