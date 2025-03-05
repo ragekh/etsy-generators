@@ -133,6 +133,45 @@ vercel
 - No environment variables are required for the frontend in development.
 - For production, you may need to set the backend API URL if it's different from the default.
 
+## Customizing AI Prompts
+
+The AI prompts used by the generators are defined in the route files in the `backend/routes` directory. Each generator has its own route file with a specific prompt.
+
+### Checking Prompts
+
+To check the current prompts:
+
+1. Navigate to the `backend/routes` directory
+2. Open the route file for the generator you want to check:
+   - `shop-name.js` - Shop Name Generator
+   - `description.js` - Product Description Generator
+   - `keywords.js` - Product Keywords Generator
+   - `title.js` - Listing Title Generator
+   - `customer-response.js` - Customer Response Generator
+   - `shop-bio.js` - Shop Bio Generator
+   - `promotion.js` - Promotion Text Generator
+   - `announcement.js` - Shop Announcement Generator
+
+3. Look for the `prompt` variable in each file, which contains the text sent to the AI model.
+
+Example from `shop-name.js`:
+```javascript
+const prompt = `You are an expert in naming businesses, especially Etsy shops. Generate 5-10 unique, catchy, and memorable shop names for an Etsy shop focused on "${keywords}". List each name on a new line.`;
+```
+
+### Editing Prompts
+
+To modify a prompt:
+
+1. Open the route file for the generator you want to modify
+2. Edit the `prompt` string to change the instructions given to the AI model
+3. Save the file and restart the backend server for the changes to take effect
+
+When editing prompts, keep in mind:
+- Be specific about the format you want the AI to return
+- Include any special instructions about style, tone, or formatting
+- Maintain the template variables (like `${keywords}`, `${productName}`, etc.) that are replaced with user input
+
 ## Contributing
 
 1. Fork the repository
