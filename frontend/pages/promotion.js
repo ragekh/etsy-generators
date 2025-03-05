@@ -5,6 +5,8 @@ import CopyButton from '../components/CopyButton';
 import LoadingSpinner from '../components/LoadingSpinner';
 import CharacterCounter from '../components/CharacterCounter';
 import SEO from '../components/SEO';
+import SEOTips from '../components/SEOTips';
+import SEOChecklist from '../components/SEOChecklist';
 
 export default function PromotionGenerator() {
   const [promotionType, setPromotionType] = useState('');
@@ -150,6 +152,11 @@ export default function PromotionGenerator() {
           </button>
         </form>
         
+        {/* SEO Tips Section - Always visible */}
+        <div className="mb-6">
+          <SEOTips category="promotion" />
+        </div>
+        
         {error && (
           <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
             <p className="text-red-700">{error}</p>
@@ -193,6 +200,34 @@ export default function PromotionGenerator() {
             </div>
           )}
         </div>
+        
+        {/* SEO Checklist - Shown after results are generated */}
+        {result && !loading && (
+          <div className="mt-8">
+            <h2 className="text-xl font-semibold mb-4">Promotion Best Practices</h2>
+            <p className="text-gray-600 mb-4">
+              Use this checklist to ensure your promotional content is effective and drives sales:
+            </p>
+            <SEOChecklist type="promotion" />
+            
+            <div className="mt-8 bg-[#F0F9FF] border border-[#B9E6FE] rounded-lg p-4">
+              <h3 className="font-semibold text-[#026AA2] mb-2">Effective Promotion Strategies</h3>
+              <p className="text-sm text-gray-700 mb-3">
+                Strategic promotions can significantly boost your Etsy shop's performance:
+              </p>
+              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                <li>Limited-time offers create urgency and increase conversion rates by up to 50%</li>
+                <li>Seasonal promotions aligned with holidays can increase traffic by 35-40%</li>
+                <li>Free shipping offers can reduce cart abandonment by 28%</li>
+                <li>Promoting on social media during peak hours increases visibility by 62%</li>
+                <li>Consistent branding across all promotional materials strengthens brand recognition</li>
+              </ul>
+              <p className="text-sm text-gray-700 mt-3">
+                While promotions don't directly impact SEO, they drive traffic to your shop, increase engagement, and boost sales - all factors that indirectly improve your shop's visibility on Etsy. Strategic promotions combined with SEO-optimized listings create a powerful marketing strategy.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

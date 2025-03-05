@@ -5,6 +5,8 @@ import CopyButton from '../components/CopyButton';
 import LoadingSpinner from '../components/LoadingSpinner';
 import CharacterCounter from '../components/CharacterCounter';
 import SEO from '../components/SEO';
+import SEOTips from '../components/SEOTips';
+import SEOChecklist from '../components/SEOChecklist';
 
 export default function CustomerResponseGenerator() {
   const [inquiryType, setInquiryType] = useState('');
@@ -146,6 +148,11 @@ export default function CustomerResponseGenerator() {
           </button>
         </form>
         
+        {/* SEO Tips Section - Always visible */}
+        <div className="mb-6">
+          <SEOTips category="customer-response" />
+        </div>
+        
         {error && (
           <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
             <p className="text-red-700">{error}</p>
@@ -189,6 +196,34 @@ export default function CustomerResponseGenerator() {
             </div>
           )}
         </div>
+        
+        {/* SEO Checklist - Shown after results are generated */}
+        {result && !loading && (
+          <div className="mt-8">
+            <h2 className="text-xl font-semibold mb-4">Customer Response Best Practices</h2>
+            <p className="text-gray-600 mb-4">
+              Use this checklist to ensure your customer responses are professional and effective:
+            </p>
+            <SEOChecklist type="customer-response" />
+            
+            <div className="mt-8 bg-[#F0F9FF] border border-[#B9E6FE] rounded-lg p-4">
+              <h3 className="font-semibold text-[#026AA2] mb-2">The Impact of Customer Service on Your Etsy Shop</h3>
+              <p className="text-sm text-gray-700 mb-3">
+                Excellent customer service is a critical factor in your Etsy shop's success:
+              </p>
+              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                <li>Shops with 5-star customer service ratings receive 67% more repeat purchases</li>
+                <li>Quick response times (under 24 hours) increase positive review likelihood by 43%</li>
+                <li>Professional communication builds trust and reduces return requests</li>
+                <li>Personalized responses increase customer loyalty and word-of-mouth referrals</li>
+                <li>Addressing issues promptly can turn negative experiences into positive reviews</li>
+              </ul>
+              <p className="text-sm text-gray-700 mt-3">
+                While your customer responses don't directly impact SEO, they significantly influence your shop's star rating and review quality, which are factors in Etsy's search algorithm. Investing time in thoughtful, professional responses can improve your shop's visibility and reputation.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

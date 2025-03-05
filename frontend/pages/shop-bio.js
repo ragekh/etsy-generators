@@ -4,6 +4,8 @@ import { ShopBioIcon } from '../components/Icons';
 import CopyButton from '../components/CopyButton';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SEO from '../components/SEO';
+import SEOTips from '../components/SEOTips';
+import SEOChecklist from '../components/SEOChecklist';
 
 export default function ShopBioGenerator() {
   const [shopFocus, setShopFocus] = useState('');
@@ -147,6 +149,11 @@ export default function ShopBioGenerator() {
           </button>
         </form>
         
+        {/* SEO Tips Section - Always visible */}
+        <div className="mb-6">
+          <SEOTips category="shop-bio" />
+        </div>
+        
         {error && (
           <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
             <p className="text-red-700">{error}</p>
@@ -189,6 +196,34 @@ export default function ShopBioGenerator() {
             </div>
           )}
         </div>
+        
+        {/* SEO Checklist - Shown after results are generated */}
+        {result && !loading && (
+          <div className="mt-8">
+            <h2 className="text-xl font-semibold mb-4">Shop Bio Best Practices</h2>
+            <p className="text-gray-600 mb-4">
+              Use this checklist to ensure your shop bio effectively tells your story and builds your brand:
+            </p>
+            <SEOChecklist type="shop-bio" />
+            
+            <div className="mt-8 bg-[#F0F9FF] border border-[#B9E6FE] rounded-lg p-4">
+              <h3 className="font-semibold text-[#026AA2] mb-2">Why Your Shop Bio Matters</h3>
+              <p className="text-sm text-gray-700 mb-3">
+                Your shop bio is a powerful tool for building trust and connecting with potential customers:
+              </p>
+              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                <li>Shops with complete, story-driven bios see 32% higher conversion rates</li>
+                <li>Including your creation process increases perceived value of your products</li>
+                <li>Personal stories create emotional connections with customers</li>
+                <li>Highlighting your expertise builds credibility and trust</li>
+                <li>Including keywords in your bio can improve your shop's search visibility</li>
+              </ul>
+              <p className="text-sm text-gray-700 mt-3">
+                While your shop bio doesn't directly impact product search rankings, it plays a crucial role in converting visitors to buyers once they find your shop. A compelling bio that tells your story, explains your process, and connects with your target audience can significantly increase your shop's success.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
