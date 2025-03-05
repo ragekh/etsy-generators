@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
-import Head from 'next/head';
 import { ShopNameIcon } from '../components/Icons';
 import CopyButton from '../components/CopyButton';
 import LoadingSpinner from '../components/LoadingSpinner';
+import SEO from '../components/SEO';
 
 export default function ShopNameGenerator() {
   const [keywords, setKeywords] = useState('');
@@ -25,16 +25,30 @@ export default function ShopNameGenerator() {
     setLoading(false);
   };
 
+  // Schema for this specific page
+  const shopNameSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    'name': 'Etsy Shop Name Generator',
+    'url': 'https://etsy-ai-generators.com/shop-name',
+    'description': 'Create unique and catchy Etsy shop names with our free AI generator. Enter keywords to get personalized shop name ideas instantly!',
+    'applicationCategory': 'BusinessApplication',
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'USD'
+    },
+    'operatingSystem': 'Web'
+  };
+
   return (
     <>
-      <Head>
-        <title>Etsy Shop Name Generator - Unique Names for Your Store</title>
-        <meta
-          name="description"
-          content="Create unique and catchy Etsy shop names with our free AI generator. Enter keywords to get personalized shop name ideas instantly!"
-        />
-        <meta name="keywords" content="Etsy shop name generator, unique Etsy store names, AI shop name tool" />
-      </Head>
+      <SEO
+        title="Etsy Shop Name Generator - Unique Names for Your Store"
+        description="Create unique and catchy Etsy shop names with our free AI generator. Enter keywords to get personalized shop name ideas instantly!"
+        keywords="Etsy shop name generator, unique Etsy store names, AI shop name tool, Etsy branding, creative shop names, business name generator"
+        schema={shopNameSchema}
+      />
       
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">

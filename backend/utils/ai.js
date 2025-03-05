@@ -38,7 +38,7 @@ async function generateText(prompt, options = {}) {
   try {
     // Default options
     const defaultOptions = {
-      model: 'deepseek/deepseek-r1:free',
+      model: 'meta-llama/llama-3.3-70b-instruct:free',
       max_tokens: 300,
     };
     

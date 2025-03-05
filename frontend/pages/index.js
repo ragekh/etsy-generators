@@ -21,8 +21,62 @@ export default function Home() {
           name="description"
           content="Generate Etsy shop names, product descriptions, keywords, and listing titles with our free AI tools. Optimize your Etsy store for success!"
         />
-        <meta name="keywords" content="Etsy AI tools, Etsy shop name generator, Etsy product description, Etsy keywords" />
+        <meta name="keywords" content="Etsy AI tools, Etsy shop name generator, Etsy product description, Etsy keywords, Etsy SEO, Etsy shop optimization" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://etsy-ai-generators.com/" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="Etsy AI Generators - Boost Your Etsy Shop with AI Tools" />
+        <meta property="og:description" content="Generate Etsy shop names, product descriptions, keywords, and listing titles with our free AI tools. Optimize your Etsy store for success!" />
+        <meta property="og:url" content="https://etsy-ai-generators.com/" />
+        <meta property="og:image" content="https://etsy-ai-generators.com/og-image.jpg" />
+        
+        {/* Twitter */}
+        <meta name="twitter:title" content="Etsy AI Generators - Boost Your Etsy Shop with AI Tools" />
+        <meta name="twitter:description" content="Generate Etsy shop names, product descriptions, keywords, and listing titles with our free AI tools." />
+        <meta name="twitter:image" content="https://etsy-ai-generators.com/twitter-image.jpg" />
+        
+        {/* Schema.org markup for Google */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebApplication',
+              'name': 'Etsy AI Generators',
+              'url': 'https://etsy-ai-generators.com/',
+              'description': 'Generate Etsy shop names, product descriptions, keywords, and listing titles with our free AI tools.',
+              'applicationCategory': 'BusinessApplication',
+              'offers': {
+                '@type': 'Offer',
+                'price': '0',
+                'priceCurrency': 'USD'
+              },
+              'operatingSystem': 'Web'
+            })
+          }}
+        />
+        
+        {/* Breadcrumbs schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              'itemListElement': [
+                {
+                  '@type': 'ListItem',
+                  'position': 1,
+                  'name': 'Home',
+                  'item': 'https://etsy-ai-generators.com/'
+                }
+              ]
+            })
+          }}
+        />
       </Head>
       <div className="text-center">
         <h1 className="text-4xl font-bold mb-4">Etsy AI Generators</h1>
