@@ -49,6 +49,18 @@ export default function Layout({ children }) {
             >
               Shop Bio
             </Link>
+            <Link
+              href="/promotion"
+              className={`hover:text-white/90 transition ${router.pathname === '/promotion' ? 'font-bold' : ''}`}
+            >
+              Promotions
+            </Link>
+            <Link
+              href="/announcement"
+              className={`hover:text-white/90 transition ${router.pathname === '/announcement' ? 'font-bold' : ''}`}
+            >
+              Announcements
+            </Link>
           </nav>
         </div>
       </header>

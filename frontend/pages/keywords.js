@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import Head from 'next/head';
 import { KeywordsIcon } from '../components/Icons';
+import CopyButton from '../components/CopyButton';
 
 export default function KeywordsGenerator() {
   const [productName, setProductName] = useState('');
@@ -83,7 +84,10 @@ export default function KeywordsGenerator() {
         
         {result && (
           <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-            <h2 className="text-xl font-semibold mb-4 text-[#232347]">Generated Keywords:</h2>
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-semibold text-[#232347]">Generated Keywords:</h2>
+              <CopyButton text={result} />
+            </div>
             <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
               <pre className="whitespace-pre-wrap text-gray-800">{result}</pre>
             </div>

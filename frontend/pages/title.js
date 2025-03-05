@@ -2,6 +2,9 @@ import { useState } from 'react';
 import axios from 'axios';
 import Head from 'next/head';
 import { TitleIcon } from '../components/Icons';
+import CopyButton from '../components/CopyButton';
+import LoadingSpinner from '../components/LoadingSpinner';
+import CharacterCounter from '../components/CharacterCounter';
 
 export default function TitleGenerator() {
   const [productName, setProductName] = useState('');
@@ -68,10 +71,17 @@ export default function TitleGenerator() {
           />
           <button
             type="submit"
-            className="w-full bg-[#F1641E] text-white p-3 rounded-md hover:bg-[#e05a1c] transition font-medium"
+            className="w-full bg-[#F1641E] text-white p-3 rounded-md hover:bg-[#e05a1c] transition font-medium flex justify-center items-center"
             disabled={loading}
           >
-            {loading ? 'Generating...' : 'Generate Title'}
+            {loading ? (
+              <>
+                <LoadingSpinner size="sm" color="#ffffff" />
+                <span className="ml-2">Generating...</span>
+              </>
+            ) : (
+              'Generate Title'
+            )}
           </button>
         </form>
         
@@ -83,9 +93,13 @@ export default function TitleGenerator() {
         
         {result && (
           <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-            <h2 className="text-xl font-semibold mb-4 text-[#232347]">Generated Title:</h2>
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-semibold text-[#232347]">Generated Title:</h2>
+              <CopyButton text={result} />
+            </div>
             <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
               <pre className="whitespace-pre-wrap text-gray-800">{result}</pre>
+              <CharacterCounter text={result} limit={140} className="mt-2" />
             </div>
             <div className="mt-4 text-sm text-gray-500">
               <p>Tip: Etsy titles have a 140-character limit. Focus on including your most important keywords near the beginning.</p>
