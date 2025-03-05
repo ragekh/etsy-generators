@@ -3,6 +3,7 @@ import axios from 'axios';
 import Head from 'next/head';
 import { ShopNameIcon } from '../components/Icons';
 import CopyButton from '../components/CopyButton';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 export default function ShopNameGenerator() {
   const [keywords, setKeywords] = useState('');
@@ -60,10 +61,17 @@ export default function ShopNameGenerator() {
           />
           <button
             type="submit"
-            className="w-full bg-[#F1641E] text-white p-3 rounded-md hover:bg-[#e05a1c] transition font-medium"
+            className="w-full bg-[#F1641E] text-white p-3 rounded-md hover:bg-[#e05a1c] transition font-medium flex justify-center items-center"
             disabled={loading}
           >
-            {loading ? 'Generating...' : 'Generate Shop Names'}
+            {loading ? (
+              <>
+                <LoadingSpinner size="sm" color="#ffffff" />
+                <span className="ml-2">Generating...</span>
+              </>
+            ) : (
+              'Generate Shop Names'
+            )}
           </button>
         </form>
         

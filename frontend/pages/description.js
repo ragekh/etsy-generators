@@ -3,6 +3,8 @@ import axios from 'axios';
 import Head from 'next/head';
 import { DescriptionIcon } from '../components/Icons';
 import CopyButton from '../components/CopyButton';
+import LoadingSpinner from '../components/LoadingSpinner';
+import CharacterCounter from '../components/CharacterCounter';
 
 export default function DescriptionGenerator() {
   const [productName, setProductName] = useState('');
@@ -67,12 +69,20 @@ export default function DescriptionGenerator() {
             placeholder="e.g., Made from high-quality silver, unique design"
             required
           />
+          <CharacterCounter text={description} limit={500} className="mb-4" />
           <button
             type="submit"
-            className="w-full bg-[#F1641E] text-white p-3 rounded-md hover:bg-[#e05a1c] transition font-medium"
+            className="w-full bg-[#F1641E] text-white p-3 rounded-md hover:bg-[#e05a1c] transition font-medium flex justify-center items-center"
             disabled={loading}
           >
-            {loading ? 'Generating...' : 'Generate Description'}
+            {loading ? (
+              <>
+                <LoadingSpinner size="sm" color="#ffffff" />
+                <span className="ml-2">Generating...</span>
+              </>
+            ) : (
+              'Generate Description'
+            )}
           </button>
         </form>
         
@@ -90,6 +100,7 @@ export default function DescriptionGenerator() {
             </div>
             <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
               <pre className="whitespace-pre-wrap text-gray-800">{result}</pre>
+              <CharacterCounter text={result} limit={1000} className="mt-2" />
             </div>
             <div className="mt-4 text-sm text-gray-500">
               <p>Tip: A good product description highlights benefits, not just features. Edit as needed to match your brand voice.</p>

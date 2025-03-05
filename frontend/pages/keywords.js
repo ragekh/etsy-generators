@@ -3,6 +3,8 @@ import axios from 'axios';
 import Head from 'next/head';
 import { KeywordsIcon } from '../components/Icons';
 import CopyButton from '../components/CopyButton';
+import LoadingSpinner from '../components/LoadingSpinner';
+import CharacterCounter from '../components/CharacterCounter';
 
 export default function KeywordsGenerator() {
   const [productName, setProductName] = useState('');
@@ -67,12 +69,20 @@ export default function KeywordsGenerator() {
             placeholder="e.g., Handmade silver necklace with unique design"
             required
           />
+          <CharacterCounter text={description} limit={300} className="mb-4" />
           <button
             type="submit"
-            className="w-full bg-[#F1641E] text-white p-3 rounded-md hover:bg-[#e05a1c] transition font-medium"
+            className="w-full bg-[#F1641E] text-white p-3 rounded-md hover:bg-[#e05a1c] transition font-medium flex justify-center items-center"
             disabled={loading}
           >
-            {loading ? 'Generating...' : 'Generate Keywords'}
+            {loading ? (
+              <>
+                <LoadingSpinner size="sm" color="#ffffff" />
+                <span className="ml-2">Generating...</span>
+              </>
+            ) : (
+              'Generate Keywords'
+            )}
           </button>
         </form>
         
@@ -93,6 +103,7 @@ export default function KeywordsGenerator() {
             </div>
             <div className="mt-4 text-sm text-gray-500">
               <p>Tip: Use these keywords in your title, tags, and description to improve your listing's visibility in search results.</p>
+              <p className="mt-1">Etsy allows up to 13 tags per listing, each with a 20-character limit.</p>
             </div>
           </div>
         )}
